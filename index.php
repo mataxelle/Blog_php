@@ -35,14 +35,14 @@
         <table>
             <thead>
                 <tr>
-                    <th><?php echo $donnees['titre']; ?></th>
+                    <th><?php echo htmlspecialchars($donnees['titre']); ?></th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td>
-                        <p><?php echo $donnees['contenu']; ?></p>
+                        <p><?php echo htmlspecialchars($donnees['contenu']); ?></p>
                     </td>
                 </tr>
             </tbody>
@@ -51,8 +51,8 @@
                 <tr>
                     <td>
                         <div class="tfoot_order">
-                            <p><?php echo $donnees['auteur']; ?></p>
-                            <p><?php echo $donnees['date_creation']; ?></p>
+                            <p><em><?php echo htmlspecialchars($donnees['auteur']); ?></em></p>
+                            <p><?php echo htmlspecialchars($donnees['date_creation']); ?></p>
                         </div>
                     </td>
                 </tr>
@@ -62,14 +62,14 @@
             </tfoot>
         </table>
 
-        <a href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
-
     <?php    
 
         }
 
         $reponse->closeCursor();
     ?>
+
+    <a class="link_comment" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
     
 </body>
 </html>

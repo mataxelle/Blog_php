@@ -9,7 +9,7 @@ h1, h3 {
 
 table {
     width: 600px;
-    margin: 60px;
+    margin: 60px auto;
 }
 
 table {
@@ -19,4 +19,22 @@ table {
 .tfoot_order {
     display: flex;
     justify-content: space-between;
+}
+
+.link_comment {
+    display: block;
+    text-align: center;
+}
+
+/* Part form*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: 1px black solid;
+}
+
+.form_div {
+    margin: 20px auto
 }
