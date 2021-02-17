@@ -12,7 +12,7 @@ table {
     margin: 60px auto;
 }
 
-table {
+table, tr {
     border: black 2px solid;
 }
 

@@ -57,7 +57,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><a href="">Commentaires</a></td>
+                    <td><a href="billetComment.php?billet=<?php echo ($donnees['id']); ?>">Commentaires</a></td>
                 </tr>
             </tfoot>
         </table>
