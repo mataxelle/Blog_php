@@ -7,7 +7,7 @@ h1, h3 {
     text-align: center;
 }
 
-table {
+table, form {
     width: 600px;
     margin: 60px auto;
 }
@@ -21,20 +21,25 @@ table, tr {
     justify-content: space-between;
 }
 
-.link_comment {
+.link {
     display: block;
     text-align: center;
 }
 
-/* Part form*/
+/* Billet form part*/
 
 .form {
     display: flex;
     flex-direction: column;
-    margin: auto;
     border: 1px black solid;
 }
 
-.form_div {
+.form_div, div {
     margin: 20px auto
+}
+
+/* Comment part*/
+
+.comment_form {
+    background-color: rgb(247, 152, 207);
 }

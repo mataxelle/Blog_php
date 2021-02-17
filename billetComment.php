@@ -32,6 +32,12 @@
         $donnees = $req->fetch();
     ?>        
 
+        <div>
+            <a href="index.php" class="link">Tous les posts =></a>
+        </div>
+
+        <div><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a><div>
+
         <table>
             <thead>
                 <tr>
@@ -64,15 +70,35 @@
         $req->closeCursor(); // Important de libérer le curseur pour la prochaine requête
 
         //Récupération commentaires post
-        $req = $bdd->prepare('SELECT * FROM commentaires WHERE id_post = ?');
+        $req = $bdd->prepare('SELECT * FROM commentaires WHERE id_post = ? ORDER BY date_creation_comment DESC');
         $req->execute(array(
             $_GET['billet']
         ));
+
+    ?>
+
+        <!-- Formulaire ajout commentaire -->
+        <form action="billetComment_post.php" method="post" class="form comment_form">
+            <div class="form_div">
+                <label for="auteur">Auteur :</label>
+                <input type="text" name="auteur" id="auteur" required />
+            </div>
+            <div class="form_div">
+                <label for="commentaire">Commentaire :</label>
+                <input type="text" name="commentaire" id="commentaire" required />
+            </div>
+            <div class="form_div">
+                <input type="submit" value="Publier" required />
+            </div>
+        </form>
+
+    <?php    
 
         while ($donnees = $req->fetch()) {
             
     ?>
 
+        <!-- Commentaires -->
         <table>
             <thead>
                 <tr>

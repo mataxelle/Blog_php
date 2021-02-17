@@ -33,7 +33,7 @@
     </form>
 
     <div>
-        <a href="index.php">Tous les posts =></a>
+        <a href="index.php" class="link">Tous les posts =></a>
     </div>
     
 </body>

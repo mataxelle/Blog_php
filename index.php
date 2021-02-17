@@ -14,6 +14,8 @@
 
     <h3>Un blog de partages d'avis sur tout et n'importe quoi ;-)</h3>
 
+    <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+
     <?php
 
         try {
@@ -27,7 +29,7 @@
 
         }
 
-        $reponse = $bdd->query('SELECT * FROM billets');
+        $reponse = $bdd->query('SELECT * FROM billets ORDER BY date_creation DESC');
 
         while ( $donnees = $reponse->fetch()) {
     ?>        
@@ -68,8 +70,10 @@
 
         $reponse->closeCursor();
     ?>
-
-    <a class="link_comment" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+     
+    <div>
+        <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+    </div>
     
 </body>
 </html>
