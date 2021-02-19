@@ -24,7 +24,7 @@
             </div>
             <div class="form_div">
                 <label for="contenu">Contenu :</label>
-                <input type="text" name="contenu" id="contenu" required>
+                <textarea name="contenu" id="contenu" required></textarea>
             </div>
             <div class="form_div">
                 <input type="submit" value="Soumettre">

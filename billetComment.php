@@ -78,14 +78,14 @@
     ?>
 
         <!-- Formulaire ajout commentaire -->
-        <form action="billetComment_post.php" method="post" class="form comment_form">
+        <form action="billetComment_post.php?billet=<?php echo $_GET['billet']; ?>" method="post" class="form comment_form">
             <div class="form_div">
                 <label for="auteur">Auteur :</label>
                 <input type="text" name="auteur" id="auteur" required />
             </div>
             <div class="form_div">
                 <label for="commentaire">Commentaire :</label>
-                <input type="text" name="commentaire" id="commentaire" required />
+                <textarea name="commentaire" id="commentaire" required></textarea>
             </div>
             <div class="form_div">
                 <input type="submit" value="Publier" required />
@@ -105,17 +105,23 @@
                     <th>Commentaires</th>
                 </tr>
             </thead>
-            <tr>
-                <td><?php echo htmlspecialchars($donnees['commentaire']); ?></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="tfoot_order">
-                        <p><em><?php echo htmlspecialchars($donnees['auteur']); ?></em></p>
-                        <p><?php echo htmlspecialchars($donnees['date_creation_comment']); ?></p>
-                    </div>
-                </td>
-            </tr>
+
+            <tbody>
+                <tr>
+                    <td><?php echo htmlspecialchars($donnees['commentaire']); ?></td>
+                </tr>
+            </tbody>
+            
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="tfoot_order">
+                            <p><em><?php echo htmlspecialchars($donnees['auteur']); ?></em></p>
+                            <p><?php echo htmlspecialchars($donnees['date_creation_comment']); ?></p>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     <?php
 

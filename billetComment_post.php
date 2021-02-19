@@ -12,14 +12,15 @@
     }
 
     //Insertion commentaire
-    $req = $bdd->prepare('INSERT INTO commentaires (auteur, commentaire) VALUES (?, ?)');
+    $req = $bdd->prepare('INSERT INTO commentaires (id_post, auteur, commentaire) VALUES (?, ?, ?)');
 
     $req->execute(array(
+        $_GET['billet'],
         $_POST['auteur'],
         $_POST['commentaire']
     ));
 
-    $donnees = $req->fetch();
+    $req->closeCursor();
 
-    header('Location: billetComment.php');
+    header('Location: billetComment.php?billet=' . $_GET['billet'] . '');
 ?>
