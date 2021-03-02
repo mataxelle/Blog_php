@@ -10,24 +10,23 @@
 </head>
 <body>
 
-    <h1>Bienvenue sur Blogii</h1>
+    <header>
+        <div class="Titre_h1"><h1>Bienvenue sur Blogii</h1></div>
+        <div class="navig"><nav>
+            <ul>
+                <li><a href="profil.php">Mon compte</a></li>
+                <li><a href="deconnexion.php">Deconnexion</a></li>
+            </ul>    
+        </nav></div>
+    </header>
 
     <h3>Un blog de partages d'avis sur tout et n'importe quoi ;-)</h3>
 
-    <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+    <p><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a></p>
 
     <?php
 
-        try {
-            
-            $bdd = new PDO('mysql:host=localhost;dbname=blog_test;charset=utf8', 'root', 'root', 
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); //Ce paramètre permet d'activer les erreurs des req SQL
-
-        } catch (\Throwable $th) {
-            
-            die('Erreur :' .$th->getMessage());
-
-        }
+        include("connexion_bdd.php");
 
         $reponse = $bdd->query('SELECT * FROM billets ORDER BY date_creation DESC');
 

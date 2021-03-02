@@ -1,15 +1,5 @@
 <?php
-
-    try {
-            
-        $bdd = new PDO('mysql:host=localhost;dbname=blog_test;charset=utf8', 'root', 'root', 
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-    } catch (\Throwable $th) {
-            
-        die('Erreur :' .$th->getMessage());
-
-    }
+    include("connexion_bdd.php");
 
     //Insertion commentaire
     $req = $bdd->prepare('INSERT INTO commentaires (id_post, auteur, commentaire) VALUES (?, ?, ?)');

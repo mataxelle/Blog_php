@@ -1,10 +1,30 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.Titre_h1 {
+    width: 70%;
+}
+
 h1 {
     color: rgb(193, 137, 245);
     margin-bottom: 60px;
+    margin-left: 35%;
 }
 
-h1, h3 {
+h1, h2, h3 {
     text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 15px;
 }
 
 table, form {
@@ -20,6 +40,15 @@ table, tr {
     display: flex;
     justify-content: space-between;
 }
+
+a {
+    text-decoration: none;
+    color: rgb(193, 137, 245);
+}
+
+a:hover {
+    color: rgb(98, 22, 168);
+} 
 
 .link {
     display: block;

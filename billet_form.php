@@ -10,7 +10,17 @@
 </head>
 <body>
 
-    <h1>Écrivez et partagez vos idées !</h1>
+    <header>
+        <div class="Titre_h1"><h1>Blogii</h1></div>
+        <div class="navig"><nav>
+            <ul>
+                <li><a href="profil.php">Mon compte</a></li>
+                <li><a href="deconnexion.php">Deconnexion</a></li>
+            </ul>    
+        </nav></div>
+    </header>
+
+    <h2>Écrivez et partagez vos idées !</h2>
 
     <form action="billet_post.php" method="post">
         <div class="form">

@@ -2,18 +2,6 @@
     include("connexion_bdd.php");
 
     // Regex
-    if (isset($_POST["pseudo"])) {
-
-        $_POST["pseudo"] = htmlspecialchars($_POST["pseudo"]); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
-
-        if (preg_match("#[a-zA-Z0-9._ ]#", $_POST["pseudo"])) {
-            echo 'Le ' . $_POST["pseudo"] . ' est <strong>valide</strong> !';
-        } else {
-            echo 'Le ' . $_POST["pseudo"] . ' n\'est pas valide, recommencez !';
-        }
-    }
-    
-
     if (isset($_POST["email"])) {
         
         $_POST["email"] = htmlspecialchars($_POST["email"]);
@@ -49,10 +37,9 @@
     $pass_hache = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
 
     // Insertion nouvel utilisateur
-    $req = $bdd->prepare('INSERT INTO membres ( pseudo, email, mot_de_passe) VALUES (?, ?, ?)');
+    $req = $bdd->prepare('INSERT INTO membres ( email, mot_de_passe) VALUES ( ?, ?)');
 
     $req->execute(array(
-    $_POST['pseudo'],
     $_POST['email'],
     $pass_hache
     ));

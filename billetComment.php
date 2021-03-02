@@ -10,18 +10,19 @@
 </head>
 <body>
 
+    <header>
+        <div class="Titre_h1"><h1>Blogii</h1></div>
+        <div class="navig"><nav>
+            <ul>
+                <li><a href="profil.php">Mon compte</a></li>
+                <li><a href="deconnexion.php">Deconnexion</a></li>
+            </ul>    
+        </nav></div>
+    </header>
+
     <?php
 
-        try {
-            
-            $bdd = new PDO('mysql:host=localhost;dbname=blog_test;charset=utf8', 'root', 'root', 
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-        } catch (\Throwable $th) {
-            
-            die('Erreur :' .$th->getMessage());
-
-        }
+        include("connexion_bdd.php");
 
         //Récupération post
         $req = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
