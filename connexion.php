@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+
     <title>Blogii connexion</title>
 </head>
 <body>
@@ -15,16 +17,16 @@
     <form action="connexion_post.php" method="post" class="form comment_form">
         <div class="form_div">
             <label for="email">Email :</label>
-            <input type="text" name="email" id="email" minlength="4" maxlength="12" required />
+            <input type="text" name="email" id="email" required />
         </div>
         <div class="form_div">
             <label for="mot_de_passe">Mot de passe :</label>
             <input type="password" name="mot_de_passe" id="mot_de_passe" minlength="7" maxlength="20" required />
         </div>
-        <div class="form_div">
+        <!--<div class="form_div">
             <label for="mot_de_passe_verification">Retapez votre mot de passe :</label>
             <input type="password" name="mot_de_passe_verification" id="mot_de_passe_verification" minlength="7" maxlength="20" required />
-        </div>
+        </div> -->
         <div class="form_div">
             <input type="submit" value="connexion" />
         </div>

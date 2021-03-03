@@ -1,7 +1,9 @@
 <?php
+
     include("connexion_bdd.php");
 
     // Regex
+    /*
     if (isset($_POST["email"])) {
         
         $_POST["email"] = htmlspecialchars($_POST["email"]);
@@ -29,20 +31,38 @@
         echo 'Vos mots de passe sont identiques';
     } else {
         echo 'Vos mots de passe ne sont pas identiques, recommencez !';
-    }
-    
+    }*/
     
 
-    // Hachage du mot de passe
-    $pass_hache = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-
-    // Insertion nouvel utilisateur
-    $req = $bdd->prepare('INSERT INTO membres ( email, mot_de_passe) VALUES ( ?, ?)');
+    // Vérification utilisateur
+    $req = $bdd->prepare('SELECT id, pseudo, mot_de_passe FROM membres WHERE email = ?');
 
     $req->execute(array(
-    $_POST['email'],
-    $pass_hache
+    $_POST['email']
     ));
+
+    $resultat = $req->fetch();
+
+    // Comparaison du mot de passe présent dans la base de données
+    $isPasswordCorrect = password_verify($_POST['mot_de_passe'], $resultat['mot_de_passe']);
+
+    if (!$resultat) {
+        
+        echo 'Attention mauvais identifiant ou mot de passe !';
+
+    } else {
+        
+        if($isPasswordCorrect) {
+            session_start();
+            $_SESSION['id'] = $resultat['id'];
+            $_SESSION['pseudo'] = $resultat['pseudo'];
+            $_SESSION['email'] = $_POST['email'];
+            echo 'Vous êtes connecté !';
+        } else {
+            echo 'Attention mauvais identifiant ou mot de passe !';
+        }
+    }
+    
 
     $req->closeCursor();
 

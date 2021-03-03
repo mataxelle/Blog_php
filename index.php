@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+
+    if (!isset($_SESSION['pseudo'])) {
+        
+        header('Location: connexion.php');
+        exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +26,7 @@
         <div class="Titre_h1"><h1>Bienvenue sur Blogii</h1></div>
         <div class="navig"><nav>
             <ul>
+                <li><?php echo $_SESSION["pseudo"]; ?><li>
                 <li><a href="profil.php">Mon compte</a></li>
                 <li><a href="deconnexion.php">Deconnexion</a></li>
             </ul>    
