@@ -27,7 +27,7 @@
         <div class="navig"><nav>
             <ul>
                 <li><?php echo $_SESSION['pseudo']; ?></li>
-                <li><a href="profil.php">Mon compte</a></li>
+                <li><a href="memberAccount.php">Mon compte</a></li>
                 <li><a href="deconnexion.php">Deconnexion</a></li>
             </ul>    
         </nav></div>
@@ -43,7 +43,7 @@
             $_GET['billet']
         ));
 
-        $donnees = $req->fetch();
+        $data = $req->fetch();
     ?>        
 
         <div>
@@ -55,14 +55,14 @@
         <table>
             <thead>
                 <tr>
-                    <th><?php echo htmlspecialchars($donnees['titre']); ?></th>
+                    <th><?php echo htmlspecialchars($data['titre']); ?></th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td>
-                        <p><?php echo htmlspecialchars($donnees['contenu']); ?></p>
+                        <p><?php echo htmlspecialchars($data['contenu']); ?></p>
                     </td>
                 </tr>
             </tbody>
@@ -71,8 +71,8 @@
                 <tr>
                     <td>
                         <div class="tfoot_order">
-                            <p><em><?php echo htmlspecialchars($donnees['auteur']); ?></em></p>
-                            <p><?php echo htmlspecialchars($donnees['date_creation']); ?></p>
+                            <p><em><?php echo htmlspecialchars($data['auteur']); ?></em></p>
+                            <p><?php echo htmlspecialchars($data['date_creation']); ?></p>
                         </div>
                     </td>
                 </tr>
@@ -95,7 +95,7 @@
         <form action="billetComment_post.php?billet=<?php echo $_GET['billet']; ?>" method="post" class="form comment_form">
             <div class="form_div">
                 <label for="auteur">Auteur :</label>
-                <input type="text" name="auteur" id="auteur" required />
+                <input type="text" name="auteur" id="auteur" value="<?php echo $_SESSION['pseudo']; ?>" required />
             </div>
             <div class="form_div">
                 <label for="commentaire">Commentaire :</label>
@@ -108,7 +108,7 @@
 
     <?php    
 
-        while ($donnees = $req->fetch()) {
+        while ($data = $req->fetch()) {
             
     ?>
 
@@ -122,7 +122,7 @@
 
             <tbody>
                 <tr>
-                    <td><?php echo htmlspecialchars($donnees['commentaire']); ?></td>
+                    <td><?php echo htmlspecialchars($data['commentaire']); ?></td>
                 </tr>
             </tbody>
             
@@ -130,8 +130,8 @@
                 <tr>
                     <td>
                         <div class="tfoot_order">
-                            <p><em><?php echo htmlspecialchars($donnees['auteur']); ?></em></p>
-                            <p><?php echo htmlspecialchars($donnees['date_creation_comment']); ?></p>
+                            <p><em><?php echo htmlspecialchars($data['auteur']); ?></em></p>
+                            <p><?php echo htmlspecialchars($data['date_creation_comment']); ?></p>
                         </div>
                     </td>
                 </tr>

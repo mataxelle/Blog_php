@@ -27,7 +27,7 @@
         <div class="navig"><nav>
             <ul>
                 <li><?php echo $_SESSION['pseudo']; ?></li>
-                <li><a href="profil.php">Mon compte</a></li>
+                <li><a href="memberAccount.php">Mon compte</a></li>
                 <li><a href="deconnexion.php">Deconnexion</a></li>
             </ul>    
         </nav></div>
