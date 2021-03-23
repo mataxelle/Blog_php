@@ -31,20 +31,7 @@
                 <li><a href="deconnexion.php">Deconnexion</a></li>
             </ul>    
         </nav></div>
-    </header>
-
-    <?php
-
-        include("connexion_bdd.php");
-
-        //Récupération post
-        $req = $bdd->prepare('SELECT * FROM billets WHERE id = ?');
-        $req->execute(array(
-            $_GET['billet']
-        ));
-
-        $data = $req->fetch();
-    ?>        
+    </header>        
 
         <div>
             <a href="index.php" class="link">Tous les posts =></a>
@@ -55,14 +42,14 @@
         <table>
             <thead>
                 <tr>
-                    <th><?php echo htmlspecialchars($data['titre']); ?></th>
+                    <th><?= htmlspecialchars($post['titre']) ?></th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td>
-                        <p><?php echo htmlspecialchars($data['contenu']); ?></p>
+                        <p><?= nl2br(htmlspecialchars($post['contenu'])) ?></p>
                     </td>
                 </tr>
             </tbody>
@@ -71,31 +58,20 @@
                 <tr>
                     <td>
                         <div class="tfoot_order">
-                            <p><em><?php echo htmlspecialchars($data['auteur']); ?></em></p>
-                            <p><?php echo htmlspecialchars($data['date_creation']); ?></p>
+                            <p><em><?= htmlspecialchars($post['auteur']) ?></em></p>
+                            <p><?= htmlspecialchars($post['date_creation']) ?></p>
                         </div>
                     </td>
                 </tr>
             </tfoot>
         </table>
 
-    <?php
 
-        $req->closeCursor(); // Important de libérer le curseur pour la prochaine requête
-
-        //Récupération commentaires post
-        $req = $bdd->prepare('SELECT * FROM commentaires WHERE id_post = ? ORDER BY date_creation_comment DESC');
-        $req->execute(array(
-            $_GET['billet']
-        ));
-
-    ?>
-
-        <!-- Formulaire ajout commentaire -->
-        <form action="billetComment_post.php?billet=<?php echo $_GET['billet']; ?>" method="post" class="form comment_form">
+        <!-- Comment form -->
+        <form action="billetComment_post.php?billet=<?= $_GET['billet'] ?>" method="post" class="form comment_form">
             <div class="form_div">
                 <label for="auteur">Auteur :</label>
-                <input type="text" name="auteur" id="auteur" value="<?php echo $_SESSION['pseudo']; ?>" required />
+                <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required />
             </div>
             <div class="form_div">
                 <label for="commentaire">Commentaire :</label>
@@ -108,11 +84,11 @@
 
     <?php    
 
-        while ($data = $req->fetch()) {
+        while ($comment = $comments->fetch()) {
             
     ?>
 
-        <!-- Commentaires -->
+        <!-- Comments -->
         <table>
             <thead>
                 <tr>
@@ -122,7 +98,7 @@
 
             <tbody>
                 <tr>
-                    <td><?php echo htmlspecialchars($data['commentaire']); ?></td>
+                    <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
                 </tr>
             </tbody>
             
@@ -130,8 +106,8 @@
                 <tr>
                     <td>
                         <div class="tfoot_order">
-                            <p><em><?php echo htmlspecialchars($data['auteur']); ?></em></p>
-                            <p><?php echo htmlspecialchars($data['date_creation_comment']); ?></p>
+                            <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
+                            <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
                         </div>
                     </td>
                 </tr>
@@ -141,7 +117,7 @@
 
         }
 
-        $req->closeCursor();
+        $comment->closeCursor();
 
     ?>
     

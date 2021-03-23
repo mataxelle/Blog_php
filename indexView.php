@@ -33,7 +33,7 @@
         </nav></div>
     </header>
 
-    <h3>Un blog de partages d'avis sur tout et n'importe quoi ;-)</h3>
+    <h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
 
     <p><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a></p>
 
@@ -52,7 +52,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <p><?= htmlspecialchars($data['contenu']) ?></p>
+                        <p><?= nl2br(htmlspecialchars($data['contenu'])) ?></p>
                     </td>
                 </tr>
             </tbody>
@@ -67,7 +67,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><a href="billetComment.php?billet=<?= ($data['id']) ?>">Commentaires</a></td>
+                    <td><a href="postController.php?id=<?= $data['id'] ?>">Commentaires</a></td>
                 </tr>
             </tfoot>
         </table>
