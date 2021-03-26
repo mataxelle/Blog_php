@@ -10,78 +10,59 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+<?php $title = 'Bloogi'; ?>
 
-    <title>Blogii</title>
-</head>
-<body>
+<?php ob_start(); ?>
+<h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
 
-    <header>
-        <div class="Titre_h1"><h1>Bienvenue sur Blogii</h1></div>
-        <div class="navig"><nav>
-            <ul>
-                <li><?php echo $_SESSION["pseudo"]; ?><li>
-                <li><a href="memberAccount.php">Mon compte</a></li>
-                <li><a href="deconnexion.php">Deconnexion</a></li>
-            </ul>    
-        </nav></div>
-    </header>
+<p><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a></p>
 
-    <h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
+<?php
 
-    <p><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a></p>
+    while ( $data = $posts->fetch()) {
+?>        
 
-    <?php
+<table>
+    <thead>
+        <tr>
+            <th><?= htmlspecialchars($data['titre']) ?></th>
+        </tr>
+    </thead>
 
-        while ( $data = $posts->fetch()) {
-    ?>        
+    <tbody>
+        <tr>
+            <td>
+                <p><?= nl2br(htmlspecialchars($data['contenu'])) ?></p>
+            </td>
+        </tr>
+    </tbody>
 
-        <table>
-            <thead>
-                <tr>
-                    <th><?= htmlspecialchars($data['titre']) ?></th>
-                </tr>
-            </thead>
+    <tfoot>
+        <tr>
+            <td>
+                <div class="tfoot_order">
+                    <p><em><?= htmlspecialchars($data['auteur']) ?></em></p>
+                    <p><?= htmlspecialchars($data['date_creation']) ?></p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="postController.php?id=<?= $data['id'] ?>">Commentaires</a></td>
+        </tr>
+    </tfoot>
+</table>
 
-            <tbody>
-                <tr>
-                    <td>
-                        <p><?= nl2br(htmlspecialchars($data['contenu'])) ?></p>
-                    </td>
-                </tr>
-            </tbody>
+<?php    
 
-            <tfoot>
-                <tr>
-                    <td>
-                        <div class="tfoot_order">
-                            <p><em><?= htmlspecialchars($data['auteur']) ?></em></p>
-                            <p><?= htmlspecialchars($data['date_creation']) ?></p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="postController.php?id=<?= $data['id'] ?>">Commentaires</a></td>
-                </tr>
-            </tfoot>
-        </table>
+    }
 
-    <?php    
-
-        }
-
-        $posts->closeCursor();
-    ?>
+    $posts->closeCursor();
+?>
      
-    <div>
-        <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
-    </div>
-    
-</body>
-</html>
+<div>
+    <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+</div>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
