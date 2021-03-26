@@ -47,7 +47,7 @@
             </td>
         </tr>
         <tr>
-            <td><a href="postController.php?id=<?= $data['id'] ?>">Commentaires</a></td>
+            <td><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></td>
         </tr>
     </tfoot>
 </table>
