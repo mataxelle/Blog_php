@@ -13,3 +13,5 @@ Possible de créer des posts.
 Affichage des posts ok.
 
 Ajout commentaire ok
+
+Structure MVC (Model Vue Controller)
