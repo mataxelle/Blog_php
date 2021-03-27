@@ -13,9 +13,10 @@
 <?php $title = 'Bloogi'; ?>
 
 <?php ob_start(); ?>
+
 <h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
 
-<p><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a></p>
+<p><a class="link" href="index.php?action=postForm">Pour écrire un post c'est par ici !!!</a></p>
 
 <?php
 
@@ -60,7 +61,7 @@
 ?>
      
 <div>
-    <a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a>
+    <a class="link" href="index.php?action=postForm">Pour écrire un post c'est par ici !!!</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

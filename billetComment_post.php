@@ -12,5 +12,5 @@
 
     $req->closeCursor();
 
-    header('Location: controller.php?id=' . $_GET['id'] . '');
+    header('Location: controller/controller.php?id=' . $_GET['id'] . '');
 ?>
