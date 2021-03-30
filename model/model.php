@@ -1,4 +1,6 @@
 <?php
+
+
     function getPosts()
     {
         include("connexion_bdd.php");
@@ -34,17 +36,44 @@
     {
         include('connexion_bdd.php');
 
-        $req = $bdd->prepare('INSERT INTO billets (auteur, titre, contenu) VALUES (?, ?, ?)');
+        $reqAddPost = $bdd->prepare('INSERT INTO billets (auteur, titre, contenu) VALUES (?, ?, ?)');
 
-        $req->execute(array(
+        $reqAddPost->execute(array(
         $_POST['auteur'],
         $_POST['titre'],
         $_POST['contenu']
         ));
 
-        return $req;
+        return $reqAddPost;
+    }
 
-        //header('Location: index.php');
+    function postComment() 
+    {
+        include("connexion_bdd.php");
+        
+        $reqAddComment = $bdd->prepare('INSERT INTO commentaires (id_post, auteur, commentaire) VALUES (?, ?, ?)');
+        
+        $reqAddComment->execute(array(
+        $_GET['id'],
+        $_POST['auteur'],
+        $_POST['commentaire']
+        ));
+
+        return $reqAddComment;
+    }
+
+    function update_Comment() 
+    {
+        include("connexion_bdd.php");
+        
+        $reqUpdateComment = $bdd->prepare('UPDATE commentaires SET commentaire = ? , date_creation_comment = NOW() WHERE id = ? ');
+        
+        $reqUpdateComment->execute(array(
+        $_POST['commentaire'],
+        $_GET['id']
+        ));
+
+        return $reqUpdateComment;
     }
 
     function memberAccount() 

@@ -16,11 +16,11 @@
 
 <h2>Écrivez et partagez vos idées !</h2>
 
-<form action="index.php?action=postForm" method="post">
+<form action="index.php?action=addPost" method="post">
     <div class="form">
         <div class="form_div">
             <label for="auteur">Auteur :</label>
-            <input type="text" name="auteur" id="auteur" value="<?php echo $_SESSION['pseudo']; ?>" required>
+            <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required>
         </div>
         <div class="form_div">
             <label for="titre">Titre :</label>

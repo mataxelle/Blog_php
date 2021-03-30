@@ -48,7 +48,7 @@
 
 
 <!-- Comment form -->
-<form action="billetComment_post.php?id=<?= $_GET['id'] ?>" method="post" class="form comment_form">
+<form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post" class="form comment_form">
     <div class="form_div">
         <label for="auteur">Auteur :</label>
         <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required />
@@ -80,14 +80,35 @@
         <tr>
             <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
         </tr>
+        <tr>
+            <td>
+                <div id="updateComment_form">
+                    <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
+                        <div class="form_div">
+                            <label for="commentaire">Commentaire :</label>
+                            <textarea name="commentaire" id="commentaire" required></textarea>
+                        </div>
+                        <div class="form_div">
+                            <input type="submit" value="Modifier" required />
+                        </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
     </tbody>
             
     <tfoot>
         <tr>
             <td>
-                <div class="tfoot_order">
-                    <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
-                    <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
+                <div>
+                    <div class="tfoot_order">
+                        <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
+                        <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
+                    </div>
+                    <div class="tfoot_order">
+                        <button id="update_Comment">Modifier</button>
+                        <button name="button" type="button">X</button>
+                    </div>
                 </div>
             </td>
         </tr>

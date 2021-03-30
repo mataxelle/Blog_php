@@ -20,5 +20,7 @@
     </header>
 
     <?= $content ?>
+
+    <script src="public/javascript.js"></script>
 </body>
 </html>

@@ -2,6 +2,10 @@
 
     require('model/model.php');
 
+    //connexion/inscription
+
+    //Routeur page
+
     function allposts() {
 
         $posts = getPosts();
@@ -21,19 +25,45 @@
         require('view/postView.php');
     }
 
-    function postForm() {
+    function addPost() {
 
-        if (!empty($_POST['auteur']) && !empty($_POST['titre']) && !empty($_POST['contenu'])) {
-            postForm($_POST['auteur'], $_POST['titre'], $_POST['contenu']);
-        } 
-        else {
-            echo 'Erreur : tous les champs ne sont pas remplis !';
-        }
-
-        //post_Form();
+        $reqAddPost = post_Form();
 
         require('view/post_form.php');
 
+        if ($reqAddPost === false) {
+            // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
+            throw new Exception('Impossible d\' ajouter le post!');
+        } else {
+            header('Location: index.php');
+        }
+        
+        //require('view/post_form.php');
+
+    }
+
+    function addComment() {
+
+        $reqAddComment = postComment();
+
+        if ($reqAddComment === false) {
+            throw new Exception('Impossible d\' ajouter le commentaire!');
+        } else {
+            header('Location: index.php?action=post&id=' . $_GET['id'] . '');
+        }
+        
+    }
+
+    function UpdateComment() {
+
+        $reqUpdateComment = Update_Comment();
+
+        if ($reqUpdateComment === false) {
+            throw new Exception('Impossible de modifier le commentaire!');
+        } else {
+            header('Location: index.php');
+        }
+        
     }
 
     function m_Account() {
