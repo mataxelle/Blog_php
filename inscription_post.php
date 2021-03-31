@@ -58,6 +58,4 @@
     ));
 
     $req->closeCursor();
-
-    header('Location: index.php');
 ?>

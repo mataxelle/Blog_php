@@ -54,8 +54,17 @@
             }
         }
         else {
-            allPosts();
+            if (!empty($_POST['email'])) {
+                log_In($_POST['email']);
+            } else {
+                throw new Exception('Erreur : Connexion impossible, vérifiez tous les champs !');
+            }
         }
     } catch (Exception $e) { // S'il y a eu une erreur, alors ...
-        echo 'Erreur : ' .$e->getMessage();
+
+        echo 'Erreur : ' . $e->getMessage();
+
+        /*$errorMessage = $e->getMessage();
+
+        require('view/errorView.php');*/
     }

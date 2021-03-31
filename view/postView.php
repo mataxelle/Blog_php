@@ -12,7 +12,10 @@
 
 <?php $title = 'Poste unique'; ?>
 
+<?php include('header.php') ?>
+
 <?php ob_start(); ?>
+
 <div>
     <a href="index.php" class="link">Tous les posts =></a>
 </div>

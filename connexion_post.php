@@ -1,6 +1,6 @@
 <?php
 
-    include("connexion_bdd.php");
+    include("model.php");
 
     // Regex
     /*
@@ -65,6 +65,4 @@
     
 
     $req->closeCursor();
-
-    header('Location: index.php');
 ?>

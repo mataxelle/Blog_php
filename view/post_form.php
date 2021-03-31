@@ -12,6 +12,8 @@
 
 <?php $title = 'Ecrire un post'; ?>
 
+<?php include('header.php'); ?>
+
 <?php ob_start(); ?>
 
 <h2>Écrivez et partagez vos idées !</h2>

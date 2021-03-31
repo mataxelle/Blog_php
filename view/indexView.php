@@ -12,6 +12,8 @@
 
 <?php $title = 'Bloogi'; ?>
 
+<?php include('header.php'); ?>
+
 <?php ob_start(); ?>
 
 <h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>

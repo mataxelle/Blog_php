@@ -1,23 +1,51 @@
 <?php
 
-    require('model/model.php');
+    // require_Once assure qu'on ne charge qu'une fois
+    require_once('model/AccountManager.php');
+    require_once('model/CommentManager.php');
+    require_once('model/PostManager.php');
 
     //connexion/inscription
+    function sign_Up() {
+
+        $signUpManager = new AccountManager();
+        $sigUp = $signUpManager->signUp();
+
+        //header('Location: index.php');
+
+        require('view/inscription.php');
+    }
+
+    function log_In() {
+
+        $logInManager = new AccountManager();
+        $logIn = $logInManager->logIn();
+
+        header('Location: index.php?action=allPosts');
+
+        //require('index.php'); non
+        //require('connexion.php');
+        require('view/connexion.php');
+    }
 
     //Routeur page
 
     function allposts() {
 
-        $posts = getPosts();
+        $postManager = new PostManager();
+        $posts = $postManager->getPosts();
 
         require('view/indexView.php');
     }
 
     function post() {
 
+        $postManager = new PostManager();
+        $commentManager = new CommentManager();
+
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $post = getPost($_GET['id']);
-            $comments = getComments($_GET['id']);
+            $post = $postManager->getPost($_GET['id']);
+            $comments = $commentManager->getComments($_GET['id']);
         } else {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
@@ -27,7 +55,8 @@
 
     function addPost() {
 
-        $reqAddPost = post_Form();
+        $postManager = new PostManager();
+        $reqAddPost = $postManager->post_Form();
 
         require('view/post_form.php');
 
@@ -44,7 +73,8 @@
 
     function addComment() {
 
-        $reqAddComment = postComment();
+        $commentManager = new CommentManager();
+        $reqAddComment = $commentManager->postComment();
 
         if ($reqAddComment === false) {
             throw new Exception('Impossible d\' ajouter le commentaire!');
@@ -56,7 +86,8 @@
 
     function UpdateComment() {
 
-        $reqUpdateComment = Update_Comment();
+        $commentManager = new CommentManager();
+        $reqUpdateComment = $commentManager->Update_Comment();
 
         if ($reqUpdateComment === false) {
             throw new Exception('Impossible de modifier le commentaire!');
@@ -68,7 +99,8 @@
 
     function m_Account() {
 
-        $getMember = memberAccount();
+        $accountManager = new AccountManager();
+        $getMember = $accountManager->memberAccount();
 
         require('view/memberAccount.php');
 

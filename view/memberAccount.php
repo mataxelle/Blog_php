@@ -12,6 +12,8 @@
 
 <?php $title = 'Mon compte'; ?>
 
+<?php include('header.php'); ?>
+
 <?php ob_start(); ?>
 
 <a href="index.php" class="link">Tous les posts =></a>
