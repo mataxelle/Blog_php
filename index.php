@@ -49,17 +49,32 @@
                     throw new Exception('Erreur : aucun identifiant de billet envoyé');
                 }    
             }
+            elseif ($_GET['action'] == 'sign_Up') {
+                if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe']) && !empty($_POST['mot_de_passe_verification'])) {
+                    sign_Up($_POST['pseudo'], $_POST['email'], $_POST['mot_de_passe'], $_POST['mot_de_passe_verification']);
+                } 
+                else {
+                    throw new Exception('Erreur : Inscription impossible, tous les champs ne sont pas remplis !');
+                }
+            }
+            elseif ($_GET['action'] == 'log_In') {
+                if (!empty($_POST['email']) && !empty($_POST['mot_de_passe'])) {
+                    log_In($_POST['email'], $_POST['mot_de_passe']);
+                } 
+                else {
+                    throw new Exception('Erreur : Connexion impossible, tous les champs ne sont pas remplis !');
+                }
+            }
             elseif ($_GET['action'] == 'memberAccount') {
                 m_Account();
             }
         }
         else {
-            if (!empty($_POST['email'])) {
-                log_In($_POST['email']);
-            } else {
-                throw new Exception('Erreur : Connexion impossible, vérifiez tous les champs !');
-            }
+
+            require('view/connexion.php');
+            //require('view/inscription.php');
         }
+        
     } catch (Exception $e) { // S'il y a eu une erreur, alors ...
 
         echo 'Erreur : ' . $e->getMessage();

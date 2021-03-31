@@ -6,7 +6,7 @@
 
 <h3>Inscription en dessous</h3>
 
-<form action="inscription_post.php" method="post" class="form comment_form">
+<form action="index.php?action=sign_Up" method="post" class="form comment_form">
     <div class="form_div">
         <label for="pseudo">Pseudo :</label>
         <input type="text" name="pseudo" id="pseudo" minlength="4" maxlength="12" required />
@@ -28,7 +28,7 @@
     </div>
 </form>
 
-<a href="view/connexion.php" class="link">Si vous possédez déjà un compte, connectez-vous par ici !</a>
+<a href="index.php" class="link">Si vous possédez déjà un compte, connectez-vous par ici !</a>
 
 <?php $content = ob_get_clean(); ?>
 

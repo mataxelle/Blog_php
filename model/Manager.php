@@ -1,11 +1,14 @@
 <?php 
+
+namespace MonEntreprise\Bloggi\Model;
+
 class Manager {
     
     //DATABASE
     protected function dbConnect()
     {
 
-        $bdd = new PDO('mysql:host=localhost;dbname=blog_test;charset=utf8', 'root', 'root');
+        $bdd = new \PDO('mysql:host=localhost;dbname=blog_test;charset=utf8', 'root', 'root');
 
         return $bdd;
     }

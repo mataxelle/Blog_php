@@ -6,7 +6,7 @@
 
 <h3>Connexion</h3>
 
-<form action="index.php" method="post" class="form comment_form">
+<form action="index.php?action=log_In" method="post" class="form comment_form">
     <div class="form_div">
         <label for="email">Email :</label>
         <input type="text" name="email" id="email" required />

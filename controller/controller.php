@@ -1,6 +1,6 @@
 <?php
 
-    // require_Once assure qu'on ne charge qu'une fois
+    // require_Once assure qu'on ne charge qu'une fois les classes
     require_once('model/AccountManager.php');
     require_once('model/CommentManager.php');
     require_once('model/PostManager.php');
@@ -8,31 +8,27 @@
     //connexion/inscription
     function sign_Up() {
 
-        $signUpManager = new AccountManager();
+        $signUpManager = new \MonEntreprise\Bloggi\Model\AccountManager();
         $sigUp = $signUpManager->signUp();
 
-        //header('Location: index.php');
+        header('Location: view/connexion.php');
 
-        require('view/inscription.php');
+        //require('view/inscription.php');
     }
 
     function log_In() {
 
-        $logInManager = new AccountManager();
+        $logInManager = new \MonEntreprise\Bloggi\Model\AccountManager();
         $logIn = $logInManager->logIn();
 
         header('Location: index.php?action=allPosts');
-
-        //require('index.php'); non
-        //require('connexion.php');
-        require('view/connexion.php');
     }
 
     //Routeur page
 
     function allposts() {
 
-        $postManager = new PostManager();
+        $postManager = new \MonEntreprise\Bloggi\Model\PostManager();
         $posts = $postManager->getPosts();
 
         require('view/indexView.php');
@@ -40,8 +36,8 @@
 
     function post() {
 
-        $postManager = new PostManager();
-        $commentManager = new CommentManager();
+        $postManager = new \MonEntreprise\Bloggi\Model\PostManager();
+        $commentManager = new \MonEntreprise\Bloggi\Model\CommentManager();
 
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $post = $postManager->getPost($_GET['id']);
@@ -55,7 +51,7 @@
 
     function addPost() {
 
-        $postManager = new PostManager();
+        $postManager = new \MonEntreprise\Bloggi\Model\PostManager();
         $reqAddPost = $postManager->post_Form();
 
         require('view/post_form.php');
@@ -64,7 +60,7 @@
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\' ajouter le post!');
         } else {
-            header('Location: index.php');
+            header('Location: index.php?action=allPosts');
         }
         
         //require('view/post_form.php');
@@ -73,7 +69,7 @@
 
     function addComment() {
 
-        $commentManager = new CommentManager();
+        $commentManager = new \MonEntreprise\Bloggi\Model\CommentManager();
         $reqAddComment = $commentManager->postComment();
 
         if ($reqAddComment === false) {
@@ -86,7 +82,7 @@
 
     function UpdateComment() {
 
-        $commentManager = new CommentManager();
+        $commentManager = new \MonEntreprise\Bloggi\Model\CommentManager();
         $reqUpdateComment = $commentManager->Update_Comment();
 
         if ($reqUpdateComment === false) {
@@ -99,7 +95,7 @@
 
     function m_Account() {
 
-        $accountManager = new AccountManager();
+        $accountManager = new \MonEntreprise\Bloggi\Model\AccountManager();
         $getMember = $accountManager->memberAccount();
 
         require('view/memberAccount.php');

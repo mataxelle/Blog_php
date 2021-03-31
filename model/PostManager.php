@@ -1,5 +1,7 @@
 <?php
 
+namespace MonEntreprise\Bloggi\Model;
+
 require_once('model/Manager.php');
 
 class PostManager extends Manager
