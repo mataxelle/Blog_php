@@ -88,7 +88,7 @@
         if ($reqUpdateComment === false) {
             throw new Exception('Impossible de modifier le commentaire!');
         } else {
-            header('Location: index.php');
+            header('Location: index.php?action=allPosts');
         }
         
     }

@@ -7,7 +7,7 @@
                 allPosts();
             }
             elseif ($_GET['action'] == 'post') {
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (isset($_GET['id']) && $_GET['id'] > 0) { // on test la présence de l'Id dans l'url
                     post();
                 }
                 else { // On arrête tout, on envoie une exception, donc on saute directement au catch
@@ -37,9 +37,9 @@
                 }
             }
             elseif ($_GET['action'] == 'updateComment') {
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if ((isset($_GET['id']) && $_GET['id'] > 0)) {
                     if (!empty($_POST['commentaire'])) {
-                        updateComment($_GET['id'], $_POST['commentaire']);
+                        updateComment($_GET['id'], $_GET['auteur'], $_POST['commentaire']);
                     } 
                     else {
                         throw new Exception('Erreur : tous les champs ne sont pas remplis !');

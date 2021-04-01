@@ -17,7 +17,7 @@
 <?php ob_start(); ?>
 
 <div>
-    <a href="index.php" class="link">Tous les posts =></a>
+    <a href="index.php?action=allPosts" class="link">Tous les posts =></a>
 </div>
 
 <div><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a><div>
