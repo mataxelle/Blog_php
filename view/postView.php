@@ -83,9 +83,9 @@
         <tr>
             <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
         </tr>
-        <tr>
+        <tr id="updateComment_form">
             <td>
-                <div id="updateComment_form">
+                <div id="">
                     <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
                         <div class="form_div">
                             <label for="commentaire">Commentaire :</label>

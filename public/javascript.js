@@ -1,13 +1,18 @@
-/*let comment = document.getElementById('comment');
-let update_Comment_Btn = document.getElementById('update_Comment');
-let update_Comment = document.getElementById('updateComment_form');
-update_Comment.style.display = 'none';
+let comment = document.getElementById('comment');
+let updateComment_Btn = document.querySelectorAll('#update_Comment');
+let updateCommentForm = document.querySelectorAll('#updateComment_form');
 
-update_Comment_Btn.onclick = function(){
+for ( let i = 0; i < updateCommentForm.length; i++) {
+    updateCommentForm[i].style.display = 'none';
+}
 
-    if (update_Comment.style.display == 'none') {
-        document.getElementById('updateComment_form').style.display = 'block';
-    } else {
-        update_Comment.style.display == 'none';
+for ( let i = 0; i < updateComment_Btn.length; i++) {
+    updateComment_Btn[i].onclick = function(){
+
+        if (updateCommentForm[i].style.display == 'none') {
+            updateCommentForm[i].style.display = 'block';
+        } else {
+            updateCommentForm[i].style.display = 'none';
+        }
     }
-}*/
+}

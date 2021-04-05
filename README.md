@@ -14,4 +14,6 @@ Affichage des posts ok.
 
 Ajout commentaire ok
 
+Modification commentaire ok
+
 Structure MVC (Model Vue Controller)
