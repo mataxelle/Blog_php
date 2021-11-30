@@ -24,7 +24,7 @@
     </div>
 </form>
 
-<a href="inscription.php" class="link">Si vous ne possédez pas de compte, inscrivez-vous par ici !</a>
+<a href="index.php?action=sign_Up" class="link">Si vous ne possédez pas de compte, inscrivez-vous par ici !</a>
 
 <?php $content = ob_get_clean(); ?>
 

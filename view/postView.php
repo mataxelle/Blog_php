@@ -16,11 +16,10 @@
 
 <?php ob_start(); ?>
 
-<div>
-    <a href="index.php?action=allPosts" class="link">Tous les posts =></a>
+<div class="home_link">
+    <div><a href="index.php?action=allPosts" class="link">Tous les posts =></a></div>
+    <div><a class="link" href="view/post_form.php">Pour écrire un post c'est par ici !!!</a></div>
 </div>
-
-<div><a class="link" href="billet_form.php">Pour écrire un post c'est par ici !!!</a><div>
 
 <table>
     <thead>

@@ -16,9 +16,10 @@
 
 <?php ob_start(); ?>
 
-<h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
-
-<p><a class="link" href="index.php?action=addPost">Pour écrire un post c'est par ici !!!</a></p>
+<div class="home_link">
+    <div><h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3></div>
+    <div><a class="link" href="index.php?action=addPost">Pour écrire un post c'est par ici !!!</a></div>
+</div>
 
 <form action="index.php?action=addPost" method="post">
     <div class="form">

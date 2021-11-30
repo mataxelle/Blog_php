@@ -54,13 +54,11 @@
         $postManager = new \MonEntreprise\Bloggi\Model\PostManager();
         $reqAddPost = $postManager->post_Form();
 
-        require('view/post_form.php');
-
         if ($reqAddPost === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\' ajouter le post!');
         } else {
-            header('Location: index.php?action=allPosts');
+            require('view/post_form.php');
         }
         
         //require('view/post_form.php');

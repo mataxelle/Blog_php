@@ -16,7 +16,10 @@
 
 <?php ob_start(); ?>
 
-<h2>Écrivez et partagez vos idées !</h2>
+<div class="home_link">
+    <div><h2>Écrivez et partagez vos idées !</h2></div>
+    <div><a href="index.php?action=allPosts" class="link">Tous les posts =></a></div>
+</div>
 
 <form action="index.php?action=addPost" method="post">
     <div class="form">
@@ -37,10 +40,6 @@
         </div>
     </div>
 </form>
-
-<div>
-    <a href="index.php" class="link">Tous les posts =></a>
-</div>
 
 <?php $content = ob_get_clean(); ?>
 

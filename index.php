@@ -15,6 +15,8 @@
                 }
             }
             elseif ($_GET['action'] == 'addPost') {
+                addPost();
+                
                 if (!empty($_POST['auteur']) && !empty($_POST['auteur']) && !empty($_POST['auteur'])) {
                     addPost($_POST['auteur'], $_POST['auteur'], $_POST['auteur']);
                 } else {
