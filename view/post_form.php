@@ -1,13 +1,13 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['pseudo'])) {
-        
-        header('Location: connexion.php');
-        exit();
-    }
-    
+if (!isset($_SESSION['pseudo'])) {
+
+    header('Location: index.php');
+    exit();
+}
+
 ?>
 
 <?php $title = 'Ecrire un post'; ?>
@@ -17,7 +17,9 @@
 <?php ob_start(); ?>
 
 <div class="home_link">
-    <div><h2>Écrivez et partagez vos idées !</h2></div>
+    <div>
+        <h2>Écrivez et partagez vos idées !</h2>
+    </div>
     <div><a href="index.php?action=allPosts" class="link">Tous les posts =></a></div>
 </div>
 

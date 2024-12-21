@@ -1,12 +1,12 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['pseudo'])) {
-        
-        header('Location: connexion.php');
-        exit();
-    }
+if (!isset($_SESSION['pseudo'])) {
+
+    header('Location: index.php');
+    exit();
+}
 
 ?>
 

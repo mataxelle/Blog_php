@@ -1,12 +1,12 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['pseudo'])) {
-        
-        header('Location: connexion.php');
-        exit();
-    }
+if (!isset($_SESSION['pseudo'])) {
+
+    header('Location: index.php');
+    exit();
+}
 
 ?>
 
@@ -64,61 +64,61 @@
     </div>
 </form>
 
-<?php    
-
-    while ($comment = $comments->fetch()) {
-            
-?>
-
-<!-- Comments -->
-<table>
-    <thead>
-        <tr>
-            <th>Commentaires</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
-        </tr>
-        <tr id="updateComment_form">
-            <td>
-                <div id="">
-                    <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
-                        <div class="form_div">
-                            <label for="commentaire">Commentaire :</label>
-                            <textarea name="commentaire" id="commentaire" required></textarea>
-                        </div>
-                        <div class="form_div">
-                            <input type="submit" value="Modifier" required />
-                        </div>
-                    </form>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-            
-    <tfoot>
-        <tr>
-            <td>
-                <div>
-                    <div class="tfoot_order">
-                        <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
-                        <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
-                    </div>
-                    <div class="tfoot_order">
-                        <button id="update_Comment">Modifier</button>
-                        <button name="button" type="button">X</button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </tfoot>
-</table>
 <?php
 
-    }
+while ($comment = $comments->fetch()) {
+
+?>
+
+    <!-- Comments -->
+    <table>
+        <thead>
+            <tr>
+                <th>Commentaires</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
+            </tr>
+            <tr id="updateComment_form">
+                <td>
+                    <div id="">
+                        <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
+                            <div class="form_div">
+                                <label for="commentaire">Commentaire :</label>
+                                <textarea name="commentaire" id="commentaire" required></textarea>
+                            </div>
+                            <div class="form_div">
+                                <input type="submit" value="Modifier" required />
+                            </div>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>
+                    <div>
+                        <div class="tfoot_order">
+                            <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
+                            <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
+                        </div>
+                        <div class="tfoot_order">
+                            <button id="update_Comment">Modifier</button>
+                            <button name="button" type="button">X</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+<?php
+
+}
 ?>
 
 <?php $content = ob_get_clean(); ?>
