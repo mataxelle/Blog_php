@@ -1,140 +1,176 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .Titre_h1 {
-    width: 70%;
+  width: 70%;
 }
 
 h1 {
-    color: rgb(193, 137, 245);
-    margin-bottom: 60px;
-    margin-left: 35%;
+  color: #c189f5;
+  margin-bottom: 60px;
 }
 
-h1, h2, h3 {
-    text-align: center;
+h1,
+h2,
+h3,
+.link {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 50px;
 }
 
 nav ul {
-    list-style-type: none;
-    display: flex;
+  list-style-type: none;
+  display: flex;
 }
 
 nav li {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
-table, form {
-    width: 600px;
-    margin: 60px auto;
+table {
+  width: 600px;
+  margin: 60px auto;
 }
 
-table, tr {
-    border: black 2px solid;
+table,
+tr {
+  border: black 2px solid;
 }
 
 .tfoot_order {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  margin: 50px 0;
 }
 
 a {
-    text-decoration: none;
-    color: rgb(193, 137, 245);
+  text-decoration: none;
+  color: rgb(193, 137, 245);
 }
 
 a:hover {
-    color: rgb(98, 22, 168);
-} 
+  color: rgb(98, 22, 168);
+}
 
 .home_link {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-/* Billet form part */
+/* Form */
 
 .form {
-    display: flex;
-    flex-direction: column;
-    border: 1px black solid;
+  background-color: rgb(247, 152, 207);
+  border-radius: 1%;
+  padding: 20px;
+  width: 500px;
+  margin: auto;
 }
 
-.form_div, div {
-    margin: 20px auto;
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-/* Comment part */
+input[type="submit"] {
+  width: 100%;
+  background-color: #c189f5;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-.comment_form {
-    background-color: rgb(247, 152, 207);
+input[type="submit"]:hover {
+  background-color: #7839b4;
 }
 
 /* Account part */
 
 .card {
-    max-width: 450px;
-    border: black solid 1px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 90px #00000024;
+  max-width: 450px;
+  border: black solid 1px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 90px #00000024;
 }
 
 .card-body {
-    padding: 10px 40px;
+  padding: 10px 40px;
 }
 
 .name {
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: bold;
-    color: rgb(193, 137, 245);
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(193, 137, 245);
 }
 
 .name:hover {
-    margin-top: 30px;
-    font-size: 24px;
-    color: rgb(98, 22, 168);
+  margin-top: 30px;
+  font-size: 24px;
+  color: rgb(98, 22, 168);
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .social-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    background-color: #c74385;
-    color: #ffffff;
-    font-size: 20px;
-    border-radius: 100%;
-    text-decoration: none;
-    margin: 0 13px 30px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: #c74385;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 100%;
+  text-decoration: none;
+  margin: 0 13px 30px 0;
 }
 
 .social-icon:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .social-icon:hover {
-    background-color: #d885af;
-    text-decoration: none;
+  background-color: #d885af;
+  text-decoration: none;
 }
 
 .card-footer {
-    background-color: #c74385;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 20px 0 20px 0;
-    margin: auto;
+  background-color: #c74385;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 20px 0 20px 0;
+  margin: auto;
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 270px;
+  }
 }

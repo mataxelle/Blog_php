@@ -16,32 +16,30 @@ if (!isset($_SESSION['pseudo'])) {
 
 <?php ob_start(); ?>
 
-<div class="home_link">
-    <div>
-        <h3>Un blog de partage d'avis sur tout et n'importe quoi ;-)</h3>
+<div>
+    <div class="link">
+        <h2>Un blog de partage d'avis sur tout et n'importe quoi.</h2>
     </div>
-    <div><a class="link" href="index.php?action=addPost">Pour écrire un post c'est par ici !!!</a></div>
+    <div class="link">
+        <a href="index.php?action=postForm_page">Pour écrire un post c'est par ici !!!</a>
+    </div>
 </div>
 
-<form action="index.php?action=addPost" method="post">
-    <div class="form">
-        <div class="form_div">
-            <label for="auteur">Auteur :</label>
-            <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required>
-        </div>
-        <div class="form_div">
-            <label for="titre">Titre :</label>
-            <input type="text" name="titre" id="titre" required>
-        </div>
-        <div class="form_div">
-            <label for="contenu">Contenu :</label>
-            <textarea name="contenu" id="contenu" required></textarea>
-        </div>
-        <div class="form_div">
-            <input type="submit" value="Soumettre">
-        </div>
-    </div>
+<div class="form">
+    <form action="index.php?action=addPost" method="post">
+        <label for="auteur">Auteur :</label>
+        <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required>
+
+        <label for="titre">Titre :</label>
+        <input type="text" name="titre" id="titre" required>
+
+        <label for="contenu">Contenu :</label>
+        <textarea name="contenu" id="contenu" required></textarea>
+
+        <input type="submit" value="Partager">
+</div>
 </form>
+</div>
 
 <?php
 

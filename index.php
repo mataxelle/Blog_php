@@ -11,6 +11,8 @@ try {
             } else { // On arrête tout, on envoie une exception, donc on saute directement au catch
                 throw new Exception('Erreur : aucun identifiant de billet envoyé');
             }
+        } elseif ($_GET['action'] == 'postForm_page') {
+            require('view/post_form.php');
         } elseif ($_GET['action'] == 'addPost') {
             addPost();
 
@@ -19,8 +21,6 @@ try {
             } else {
                 throw new Exception('Erreur : tous les champs ne sont pas remplis !');
             }
-
-            //require('view/post_form.php');
         } elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) {
