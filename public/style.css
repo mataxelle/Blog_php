@@ -89,7 +89,8 @@ input[type="submit"]:hover {
 
 /* Post */
 
-.post {
+.post,
+.comment {
   background: #fff;
   border-radius: 1%;
   padding: 20px;
@@ -103,18 +104,29 @@ input[type="submit"]:hover {
   font-size: 1.5rem;
 }
 
-.post_content {
+.post_time,
+.comment_time {
+  font-size: 0.8rem;
+  color: #22215b;
+}
+
+.post_content,
+.comment_content {
   padding: 1rem 0;
   color: #22215b80;
   font-size: 1rem;
 }
 
 .post_footer,
-.post_footer_bis {
+.post_footer_bis,
+.comment_time,
+.comment_footer_action {
   display: flex;
 }
 
-.post_footer {
+.post_footer,
+.comment_time,
+.comment_footer_action {
   justify-content: space-between;
 }
 

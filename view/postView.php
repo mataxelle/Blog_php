@@ -57,57 +57,36 @@ if (!isset($_SESSION['pseudo'])) {
 </div>
 
 <!-- Comments -->
+<h4>Commentaires</h4>
+
 <?php
 
 while ($comment = $comments->fetch()) {
 
 ?>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Commentaires</th>
-            </tr>
-        </thead>
+    <div class="comment">
+        <span class="comment_time">
+            <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
+            <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
+        </span>
+        <p class="comment_content">
+            <?= nl2br(htmlspecialchars($comment['commentaire'])) ?>
+        </p>
+        <div class="comment_footer_action">
+            <button id="update_Comment">Modifier</button>
+            <button name="button" type="button">X</button>
+        </div>
+    </div>
 
-        <tbody>
-            <tr>
-                <td><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></td>
-            </tr>
-            <tr id="updateComment_form">
-                <td>
-                    <div id="">
-                        <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
-                            <div class="form_div">
-                                <label for="commentaire">Commentaire :</label>
-                                <textarea name="commentaire" id="commentaire" required></textarea>
-                            </div>
-                            <div class="form_div">
-                                <input type="submit" value="Modifier" required />
-                            </div>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
+    <div class="form" id="updateComment_form">
+        <form action="index.php?action=updateComment&amp;id=<?= $comment['id'] ?>" method="post">
+            <label for="commentaire">Commentaire :</label>
+            <textarea name="commentaire" id="commentaire" required></textarea>
 
-        <tfoot>
-            <tr>
-                <td>
-                    <div>
-                        <div class="tfoot_order">
-                            <p><em><?= htmlspecialchars($comment['auteur']) ?></em></p>
-                            <p><?= htmlspecialchars($comment['date_creation_comment']) ?></p>
-                        </div>
-                        <div class="tfoot_order">
-                            <button id="update_Comment">Modifier</button>
-                            <button name="button" type="button">X</button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+            <input type="submit" value="Modifier" required />
+        </form>
+    </div>
 <?php
 
 }
