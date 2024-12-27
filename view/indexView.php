@@ -21,10 +21,11 @@ if (!isset($_SESSION['pseudo'])) {
         <h2>Un blog de partage d'avis sur tout et n'importe quoi.</h2>
     </div>
     <div class="link">
-        <a href="index.php?action=postForm_page">Pour écrire un post c'est par ici !!!</a>
+        <a href="index.php?action=postForm_page">Écrire un post</a>
     </div>
 </div>
 
+<!-- Post form -->
 <div class="form">
     <form action="index.php?action=addPost" method="post">
         <label for="auteur">Auteur :</label>
@@ -37,44 +38,30 @@ if (!isset($_SESSION['pseudo'])) {
         <textarea name="contenu" id="contenu" required></textarea>
 
         <input type="submit" value="Partager">
-</div>
-</form>
+    </form>
 </div>
 
+<!-- Posts -->
 <?php
 
-while ($data = $posts->fetch()) {
+while ($post = $posts->fetch()) {
 ?>
 
-    <table>
-        <thead>
-            <tr>
-                <th><?= htmlspecialchars($data['titre']) ?></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>
-                    <p><?= nl2br(htmlspecialchars($data['contenu'])) ?></p>
-                </td>
-            </tr>
-        </tbody>
-
-        <tfoot>
-            <tr>
-                <td>
-                    <div class="tfoot_order">
-                        <p><em><?= htmlspecialchars($data['auteur']) ?></em></p>
-                        <p><?= htmlspecialchars($data['date_creation']) ?></p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="post">
+        <h3 class="post_title">
+            <?= htmlspecialchars($post['titre']) ?>
+        </h3>
+        <span class="post_time">
+            <p><?= htmlspecialchars($post['date_creation']) ?></p>
+        </span>
+        <p class="post_content">
+            <?= nl2br(htmlspecialchars($post['contenu'])) ?>
+        </p>
+        <div class="post_footer">
+            <a href="index.php?action=post&amp;id=<?= $post['id'] ?>" class="comment_link">Commentaires</a>
+            <p><em><?= htmlspecialchars($post['auteur']) ?></em></p>
+        </div>
+    </div>
 
 <?php
 
@@ -82,10 +69,6 @@ while ($data = $posts->fetch()) {
 
 $posts->closeCursor();
 ?>
-
-<div>
-    <a class="link" href="index.php?action=addPost">Pour écrire un post c'est par ici !!!</a>
-</div>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -16,61 +16,53 @@ if (!isset($_SESSION['pseudo'])) {
 
 <?php ob_start(); ?>
 
-<div class="home_link">
-    <div><a href="index.php?action=allPosts" class="link">Tous les posts =></a></div>
-    <div><a class="link" href="view/post_form.php">Pour écrire un post c'est par ici !!!</a></div>
+<div>
+    <div class="link">
+        <a href="index.php?action=allPosts">Tous les posts =></a>
+    </div>
+    <div class="link">
+        <a href="index.php?action=postForm_page">Écrire un post</a>
+    </div>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th><?= htmlspecialchars($post['titre']) ?></th>
-        </tr>
-    </thead>
+<!-- Post -->
+<div class="post">
+    <h3 class="post_title">
+        <?= htmlspecialchars($post['titre']) ?>
+    </h3>
+    <span class="post_time">
+        <p><?= htmlspecialchars($post['date_creation']) ?></p>
+    </span>
+    <p class="post_content">
+        <?= nl2br(htmlspecialchars($post['contenu'])) ?>
+    </p>
+    <div class="post_footer_bis">
+        <p><em><?= htmlspecialchars($post['auteur']) ?></em></p>
+    </div>
+</div>
 
-    <tbody>
-        <tr>
-            <td>
-                <p><?= nl2br(htmlspecialchars($post['contenu'])) ?></p>
-            </td>
-        </tr>
-    </tbody>
-
-    <tfoot>
-        <tr>
-            <td>
-                <div class="tfoot_order">
-                    <p><em><?= htmlspecialchars($post['auteur']) ?></em></p>
-                    <p><?= htmlspecialchars($post['date_creation']) ?></p>
-                </div>
-            </td>
-        </tr>
-    </tfoot>
-</table>
-
+<h4>Ajouter un commentaire</h4>
 
 <!-- Comment form -->
-<form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post" class="form comment_form">
-    <div class="form_div">
+<div class="form">
+    <form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
         <label for="auteur">Auteur :</label>
         <input type="text" name="auteur" id="auteur" value="<?= $_SESSION['pseudo'] ?>" required />
-    </div>
-    <div class="form_div">
+
         <label for="commentaire">Commentaire :</label>
         <textarea name="commentaire" id="commentaire" required></textarea>
-    </div>
-    <div class="form_div">
-        <input type="submit" value="Publier" required />
-    </div>
-</form>
 
+        <input type="submit" value="Publier" required />
+    </form>
+</div>
+
+<!-- Comments -->
 <?php
 
 while ($comment = $comments->fetch()) {
 
 ?>
 
-    <!-- Comments -->
     <table>
         <thead>
             <tr>

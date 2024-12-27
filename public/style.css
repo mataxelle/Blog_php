@@ -1,3 +1,7 @@
+body {
+  background: #f1f3f6;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -15,7 +19,7 @@ h1 {
 
 h1,
 h2,
-h3,
+h4,
 .link {
   text-align: center;
 }
@@ -33,21 +37,6 @@ nav li {
   margin-right: 15px;
 }
 
-table {
-  width: 600px;
-  margin: 60px auto;
-}
-
-table,
-tr {
-  border: black 2px solid;
-}
-
-.tfoot_order {
-  display: flex;
-  justify-content: space-between;
-}
-
 .link {
   margin: 50px 0;
 }
@@ -59,12 +48,6 @@ a {
 
 a:hover {
   color: rgb(98, 22, 168);
-}
-
-.home_link {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 /* Form */
@@ -102,6 +85,45 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #7839b4;
+}
+
+/* Post */
+
+.post {
+  background: #fff;
+  border-radius: 1%;
+  padding: 20px;
+  width: 500px;
+  margin: 50px auto;
+}
+
+.post_title {
+  color: #22215b;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.post_content {
+  padding: 1rem 0;
+  color: #22215b80;
+  font-size: 1rem;
+}
+
+.post_footer,
+.post_footer_bis {
+  display: flex;
+}
+
+.post_footer {
+  justify-content: space-between;
+}
+
+.post_footer_bis {
+  justify-content: end;
+}
+
+.comment_link {
+  align-content: center;
 }
 
 /* Account part */
